@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorted Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
 
+        #band {
+            list-style: none;
+            padding: 0;
+        }
+
+        #band li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
+
+<ul id="band"></ul>
+
+<script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+    // Remove specified words and sort
+    const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+    // Display sorted articles
+    const bandList = document.getElementById('band');
+    sortedBands.forEach(band => {
+        const listItem = document.createElement('li');
+        listItem.textContent = band;
+        bandList.appendChild(listItem);
+    });
+
+    function strip(bandName) {
+        return bandName.replace(/^(a |an |the )/i, '').trim();
+    }
 </script>
 
 </body>
-
 </html>
